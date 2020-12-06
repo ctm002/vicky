@@ -6,7 +6,7 @@ script: ./mvnw clean package
 notifications:
  email:carlostapiam@gmail.com
 
-before_script:   
+before_install:   
  - chmod a+x ./mvnw
 
 install:
