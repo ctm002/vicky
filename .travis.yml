@@ -5,3 +5,9 @@ script: ./mvnw clean package
 
 notifications:
  email:carlostapiam@gmail.com
+
+before_script:   
+ - chmod a+x ./mvnw
+
+install:
+ - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
