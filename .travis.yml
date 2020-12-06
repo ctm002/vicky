@@ -8,7 +8,7 @@ addons:
 notifications: email:carlostapiam@gmail.com
 before_install:
 - openssl aes-256-cbc -K $encrypted_faf3d0b2ca4b_key -iv $encrypted_faf3d0b2ca4b_iv
-  -in ctapia_rsa.enc -out ctapia_rsa -d
+  -in ctapia.enc -out ctapia -d
 - openssl aes-256-cbc -K $encrypted_e8324199bea4_key -iv $encrypted_e8324199bea4_iv
   -in ctapia.enc -out ctapia -d
 - chmod a+x ./mvnw
