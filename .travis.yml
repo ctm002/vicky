@@ -18,6 +18,13 @@ before_install:
 install:
 - "./mvnw clean package -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 
+env:
+ global:
+  - REMOTEAPPDIR=/home/ctapia/backend/
+  - REMOTEUSER=ctapia
+  - REMOTEHOST=161.35.122.230
+  - PORT=8080
+
 deploy:
  provider: script
  #file: vicky.jar
@@ -26,13 +33,6 @@ deploy:
  script: bash scripts/deploy.sh
  on:
   branch: master
-
-env:
-  global:
-  - REMOTEAPPDIR=/home/ctapia/backend/
-  - REMOTEUSER=ctapia
-  - REMOTEHOST=161.35.122.230
-  - PORT=8080
 
 #after_success:
 # - bash ./deploy.sh
