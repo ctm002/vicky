@@ -19,10 +19,11 @@ install:
 - "./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 
 deploy:
- provider: releases
- file: vicky.jar
+ provider: script
+ #file: vicky.jar
  skip_cleanup: true
  github_token: $GITHUB_TOKEN
+ script: bash scripts/deploy.sh
  on:
   branch: master
 
