@@ -23,7 +23,7 @@ deploy:
  #file: vicky.jar
  skip_cleanup: true
  github_token: $GITHUB_TOKEN
- script: bash ./deploy.sh
+ script: bash scripts/deploy.sh
  on:
   branch: master
 
