@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "$REMOTE_USER@$REMOTE_HOST:$REMOTE_APP_DIR" && \
+echo "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_APP_DIR}" && \
 cd $TRAVIS_BUILD_DIR && \
 pwd && \
 ls -la && \
