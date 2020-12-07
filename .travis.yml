@@ -23,7 +23,7 @@ deploy:
  #file: vicky.jar
  skip_cleanup: true
  github_token: $GITHUB_TOKEN
- script: bash scripts/deploy.sh
+ script: bash ./deploy.sh
  on:
   branch: master
 
@@ -34,5 +34,5 @@ env:
   - REMOTEHOST=161.35.122.230
   - PORT=8080
 
-after_success:
- - bash ./deploy.sh
+#after_success:
+# - bash ./deploy.sh
