@@ -24,9 +24,13 @@ deploy:
  skip_cleanup: true
  on:
   branch: master
+
 env:
   global:
   - REMOTEAPPDIR=/home/ctapia/backend/
   - REMOTEUSER=ctapia
   - REMOTEHOST=161.35.122.230
   - PORT=8080
+
+after_success:
+- "./scripts/deploy.sh"
