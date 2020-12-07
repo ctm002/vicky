@@ -32,5 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 /ctapia
-/ctapia_rsa
-/ctapia_rsa.pub
+/vicky
+/vicky.pub
