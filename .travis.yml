@@ -33,4 +33,4 @@ env:
   - PORT=8080
 
 after_success:
-- "./deploy.sh"
+- ./deploy.sh
