@@ -12,6 +12,7 @@ notifications:
 before_install:
 - openssl aes-256-cbc -K $encrypted_e79cab55eab4_key -iv $encrypted_e79cab55eab4_iv
   -in vicky.enc -out vicky -d
+- pwd
 - chmod 644 ./vicky
 - chmod a+x ./mvnw
 
