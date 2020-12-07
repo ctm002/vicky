@@ -22,6 +22,7 @@ deploy:
  provider: releases
  file: vicky.jar
  skip_cleanup: true
+ github_token: $GITHUB_TOKEN
  on:
   branch: master
 
