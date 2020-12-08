@@ -31,12 +31,10 @@ install:
 
 deploy:
  provider: script
- #file: vicky.jar
  skip_cleanup: true
  github_token: $GITHUB_TOKEN
  script: bash scripts/deploy.sh
  on:
   branch: master
-
-#after_success:
-# - bash ./deploy.sh
+after_success:
+ - bash ssh -i ctapia@161.35.122.230 'bash -s' < /home/ctapia/backend/init.sh start
