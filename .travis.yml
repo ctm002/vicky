@@ -37,4 +37,4 @@ deploy:
  on:
   branch: master
 after_success:
- - bash ssh -i ctapia@161.35.122.230 "bash -s < ~/backend/init.sh restart"
+ - bash ssh -i ctapia@161.35.122.230 "~/backend/init.sh restart"
