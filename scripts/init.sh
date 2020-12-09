@@ -3,10 +3,6 @@ SPRING_OPTS=""
 JAVA_PATH="java"
 PIDFile="application.pid"
 
-print_process () {
-        echo "$(cat $PIDFile)"
-}
-
 check_if_process_is_running () {
         if [ -f $PIDFile ]; then
                 if ps -p $(print_process) > /dev/null; then
@@ -14,6 +10,10 @@ check_if_process_is_running () {
                 fi
         fi
         return 1
+}
+
+print_process () {
+        echo "$(cat $PIDFile)"
 }
 
 case "$1" in
