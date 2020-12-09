@@ -7,8 +7,10 @@ check_if_process_is_running () {
         if [ -f $PIDFile ]; then
                 if ps -p $(print_process) > /dev/null; then
                         return 0
-                fi
+                fi;;
         fi
+        ;;
+        ps -ef | grep 'jar' | grep -v grep | awk '{print $2}' | xargs kill
         return 1
 }
 
