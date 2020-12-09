@@ -3,19 +3,17 @@ SPRING_OPTS=""
 JAVA_PATH="java"
 PIDFile="application.pid"
 
+print_process () {
+        echo "$(cat $PIDFile)"
+}
+
 check_if_process_is_running () {
         if [ -f $PIDFile ]; then
                 if ps -p $(print_process) > /dev/null; then
                         return 0
-                fi;;
+                fi
         fi
-        ;;
-        ps -ef | grep 'jar' | grep -v grep | awk '{print $2}' | xargs kill
         return 1
-}
-
-print_process () {
-        echo "$(cat $PIDFile)"
 }
 
 case "$1" in
@@ -29,6 +27,7 @@ case "$1" in
         stop)
                 if ! check_if_process_is_running; then
                         echo "App no se encuentra en ejecución"
+                        ps -ef | grep 'jar' | grep -v grep | awk '{print $2}' | xargs kill
                         exit 0
                 fi
 
