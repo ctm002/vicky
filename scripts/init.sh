@@ -1,3 +1,8 @@
+#!/bin/bash
+SPRING_OPTS="-Xms1024m -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError -DLOG_PATH=/home/ctapia/backend/logs"
+JAVA_PATH="java"
+PIDFile="application.pid"
+
 check_if_process_is_running () {
         if [ -f $PIDFile ]; then
                 #if ps -ef $(print_process) > /dev/null; then
@@ -51,7 +56,7 @@ case "$1" in
                 if [ -z "$2" ]; then
                         echo "iniciando app.. en los archivos jar"
                         $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) &
-                        echo "App $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada" & exit 0
+                        echo "App find $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada" & exit 0
                 else
                         echo "iniciando app.."
                         if [ -f $2 ]; then
