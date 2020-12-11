@@ -48,5 +48,5 @@ deploy:
  script: rsync -rmaz --include="*/" --include="*.jar" --exclude="*" --delete-after --quiet $TRAVIS_BUILD_DIR/target/ vtapia@161.35.122.230:/home/vtapia/backend
  on:
   branch: master
-#after_success:
-# - ssh -o StrictHostKeyChecking=no -i ~/.ssh/vicky ctapia@161.35.122.230 "~/backend/init.sh restart"
+after_success:
+ - ssh -o StrictHostKeyChecking=no -i ~/.ssh/vicky vtapia@161.35.122.230 "~/backend/init.sh restart"
