@@ -1,5 +1,5 @@
 #!/bin/bash
-SPRING_OPTS="-Xms1024m -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError -DLOG_PATH=/home/ctapia/backend/logs"
+SPRING_OPTS="-Xms1024m -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError -DLOG_PATH=/home/vtapia/backend/logs"
 JAVA_PATH="java"
 PIDFile="application.pid"
 
