@@ -34,11 +34,18 @@ install:
 #  - REMOTEHOST=161.35.122.230
 #  - PORT=8080
 
+before_deploy:
+ - openssl aes-256-cbc -K $encrypted_e79cab55eab4_key -iv $encrypted_e79cab55eab4_iv -in vicky.enc -out  ~/.ssh/vicky -d
+ - eval "$(ssh-agent -s)"
+ - chmod 600 ~/.ssh/vicky
+ - ssh-add ~/.ssh/vicky
+
 deploy:
  provider: script
  skip_cleanup: true
  github_token: $GITHUB_TOKEN
- script: bash scripts/deploy.sh
+# script: bash scripts/deploy.sh
+ script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/target ctapia@161.35.122.230:/home/ctapia/backend
  on:
   branch: master
 #after_success:
