@@ -1,11 +1,9 @@
-#!/bin/bash
-SPRING_OPTS=""
-JAVA_PATH="java"
-PIDFile="application.pid"
-
 check_if_process_is_running () {
         if [ -f $PIDFile ]; then
-                if ps -p $(print_process) > /dev/null; then
+                #if ps -ef $(print_process) > /dev/null; then
+                #       return 0
+                #fi
+                if [ -s application.pid ]; then
                         return 0
                 fi
         fi
@@ -26,8 +24,11 @@ case "$1" in
                 ;;
         stop)
                 if ! check_if_process_is_running; then
-                        echo "App no se encuentra en ejecución y buscamos un proceso jar"
-                        print_process = $(ps -ef | grep 'jar' | grep -v grep | awk '{print $2}')
+                        echo "App no se encuentra en ejecución"
+                        echo "buscando jar en los proceso para el kill"
+                        ps -ef | grep 'jar' | grep -v grep | awk '{print $2}' | xargs kill
+                        sleep 5
+                        exit 0
                 fi
 
                 echo "Deteniendo app ..."
@@ -48,12 +49,14 @@ case "$1" in
                 fi
 
                 if [ -z "$2" ]; then
+                        echo "iniciando app.. en los archivos jar"
                         $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) &
-                        echo "App sin parametros opts $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
+                        echo "App $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada" & exit 0
                 else
+                        echo "iniciando app.."
                         if [ -f $2 ]; then
                                 $JAVA_PATH $SPRING_OPTS -jar $2 &
-                                echo "App $2 iniciada" & exit 0
+                                echo "App $2 iniciada"
                         else
                                 echo "Archivo $2 no encontrado"
                                 exit 1
