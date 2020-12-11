@@ -65,3 +65,4 @@ Using generated security password: 12239e93-90ae-4943-b3ee-eb85a27b7642
 15:54:48.806 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
 15:54:49.010 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/api'
 15:54:49.020 [main] INFO  cl.bitsoft.vicky.Application - Started Application in 2.658 seconds (JVM running for 3.189)
+16:06:33.807 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
