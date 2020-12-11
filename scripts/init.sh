@@ -5,9 +5,6 @@ PIDFile="application.pid"
 
 check_if_process_is_running () {
         if [ -f $PIDFile ]; then
-                #if ps -ef $(print_process) > /dev/null; then
-                #       return 0
-                #fi
                 if [ -s application.pid ]; then
                         return 0
                 fi
@@ -29,24 +26,21 @@ case "$1" in
                 ;;
         stop)
                 if ! check_if_process_is_running; then
-                        echo "App no se encuentra en ejecución"
-                        echo "buscando jar en los proceso para el kill"
-                        ps -ef | grep 'jar' | grep -v grep | awk '{print $2}' | xargs kill
-                        sleep 5
-                        exit 0
+                        PIDs=`ps -ef | grep 'jar' | grep -v grep | awk '{print $2}'`
+                        if [ -n $PIDs ]; then
+                                if [ -z $PIDs ]; then
+                                        echo "App no se encuentra en ejecución"
+                                        exit 1
+                                else
+                                  for p in $PIDs; do
+                                          echo "deteniendo proceso $p"
+                                          kill -9 $p
+                                  done
+                                  exit 0
+                                fi
+                        fi
                 fi
-
-                echo "Deteniendo app ..."
-                kill $(print_process)
-                sleep 5
-
-                if ! check_if_process_is_running; then
-                        echo "App detenida"
-                else
-                        echo "No fue posible detener app. Proceso (PID): $(print_process)"
-                        exit 1
-                fi
-                ;;
+               ;;
         start)
                 if check_if_process_is_running; then
                         echo "App ya se encuentra en ejecución"
@@ -55,8 +49,9 @@ case "$1" in
 
                 if [ -z "$2" ]; then
                         echo "iniciando app.. en los archivos jar"
-                        $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) &
-                        echo "App find $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada" & exit 0
+                        $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) > /dev/null &
+                        echo "App find $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
+                        exit 0
                 else
                         echo "iniciando app.."
                         if [ -f $2 ]; then
@@ -80,5 +75,4 @@ case "$1" in
         echo "Uso: $0 {start|stop|restart|status} [jar-file]"
         exit 1
 esac
-
 exit 0
