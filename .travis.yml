@@ -45,7 +45,7 @@ deploy:
  skip_cleanup: true
 # github_token: $GITHUB_TOKEN
 #script: bash scripts/deploy.sh
- script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/target vtapia@161.35.122.230:/home/vtapia/backend
+ script: rsync -r --include="*/" --include="*.jar" --include="*.sh" --exclude="*" --delete-after --quiet $TRAVIS_BUILD_DIR/target vtapia@161.35.122.230:/home/vtapia/backend
  on:
   branch: master
 #after_success:
