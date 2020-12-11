@@ -26,9 +26,8 @@ case "$1" in
                 ;;
         stop)
                 if ! check_if_process_is_running; then
-                        echo "App no se encuentra en ejecución"
-                        ps -ef | grep 'jar' | grep -v grep | awk '{print $2}' | xargs kill &
-                        exit 0
+                        echo "App no se encuentra en ejecución y buscamos un proceso jar"
+                        print_process = $(ps -ef | grep 'jar' | grep -v grep | awk '{print $2}')
                 fi
 
                 echo "Deteniendo app ..."
