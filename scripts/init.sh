@@ -50,7 +50,7 @@ case "$1" in
 
                 if [ -z "$2" ]; then
                         $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) &
-                        echo "App $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
+                        echo "App $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada" & exit 0
                 else
                         if [ -f $2 ]; then
                                 $JAVA_PATH $SPRING_OPTS -jar $2 &
