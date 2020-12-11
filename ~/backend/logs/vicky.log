@@ -49,3 +49,19 @@ Using generated security password: 5d4b8544-f8b6-4c17-98d2-205ead51b0c6
 15:46:44.003 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/api'
 15:46:44.013 [main] INFO  cl.bitsoft.vicky.Application - Started Application in 2.505 seconds (JVM running for 3.016)
 15:46:45.555 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+15:54:46.943 [main] INFO  cl.bitsoft.vicky.Application - Starting Application using Java 11.0.8 on LAPTOP-KMJSVET0 with PID 15936 (C:\Users\carlo\codely\vicky\target\classes started by carlo in C:\Users\carlo\codely\vicky)
+15:54:46.946 [main] INFO  cl.bitsoft.vicky.Application - No active profile set, falling back to default profiles: default
+15:54:48.326 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+15:54:48.338 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+15:54:48.338 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.39]
+15:54:48.432 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+15:54:48.433 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1421 ms
+15:54:48.634 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 12239e93-90ae-4943-b3ee-eb85a27b7642
+
+15:54:48.681 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/donativos'] with []
+15:54:48.709 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@64da6cbd, org.springframework.security.web.context.SecurityContextPersistenceFilter@9f674ac, org.springframework.security.web.header.HeaderWriterFilter@4eea94a4, org.springframework.security.web.csrf.CsrfFilter@6025d790, org.springframework.security.web.authentication.logout.LogoutFilter@60df7989, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23cbbd07, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5be052ca, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@72a2312e, org.springframework.security.web.session.SessionManagementFilter@35b17c06, org.springframework.security.web.access.ExceptionTranslationFilter@ed2f2f6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6e31d989]
+15:54:48.806 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+15:54:49.010 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/api'
+15:54:49.020 [main] INFO  cl.bitsoft.vicky.Application - Started Application in 2.658 seconds (JVM running for 3.189)
