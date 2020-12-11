@@ -50,11 +50,11 @@ case "$1" in
 
                 if [ -z "$2" ]; then
                         $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) &
-                        echo "App sin parametris opts $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
+                        echo "App sin parametros opts $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
                 else
                         if [ -f $2 ]; then
                                 $JAVA_PATH $SPRING_OPTS -jar $2 &
-                                echo "App $2 iniciada"
+                                echo "App $2 iniciada" & exit 0
                         else
                                 echo "Archivo $2 no encontrado"
                                 exit 1
