@@ -3,8 +3,8 @@ sudo: true
 jdk:
 - openjdk11
   #script: "./mvnw clean package"
-#addons:
-# ssh_known_hosts: 161.35.122.230
+addons:
+ ssh_known_hosts: 161.35.122.230
 
 notifications:
  email:carlostapiam@gmail.com
