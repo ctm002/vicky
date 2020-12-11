@@ -18,7 +18,8 @@ before_install:
 - chmod 755 ~/.ssh
 - chmod 600 ~/.ssh/vicky
 - chmod a+x ./mvnw
-
+- cd  ~/.ssh
+- ls -la
 install:
 - "./mvnw clean package -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 
