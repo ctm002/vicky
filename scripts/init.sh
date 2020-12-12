@@ -37,8 +37,9 @@ stop_process () {
 start_process() {
 #        if [ -z "$2" ]; then
                 echo "Iniciando App"
-                $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) > /dev/null &
-                echo "App $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
+                APP_JAR=`find . -type f -name '*.jar' | sort -n | tail -1`
+                $JAVA_PATH $SPRING_OPTS -jar $APP_JAR > /dev/null &
+                echo "App $APP_JAR iniciada"
 #        fi
 }
 
