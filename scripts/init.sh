@@ -16,6 +16,24 @@ print_process () {
         echo "$(cat $PIDFile)"
 }
 
+stop_process () {
+        if ! check_if_process_is_running; then
+              PIDs=`ps -ef | grep 'jar' | grep -v grep | awk '{print $2}'`
+              if [ -n $PIDs ]; then
+                      if [ -z $PIDs ]; then
+                              echo "App no se encuentra en ejecución"
+                              exit 0
+                      else
+                        for p in $PIDs; do
+                                echo "Deteniendo proceso $p"
+                                kill -9 $p
+                        done
+                        exit 0
+                      fi
+              fi
+        fi
+}
+
 case "$1" in
         status)
                 if check_if_process_is_running; then
@@ -26,21 +44,7 @@ case "$1" in
                 ;;
         stop)
                 echo "init stop"
-                if ! check_if_process_is_running; then
-                        PIDs=`ps -ef | grep 'jar' | grep -v grep | awk '{print $2}'`
-                        if [ -n $PIDs ]; then
-                                if [ -z $PIDs ]; then
-                                        echo "App no se encuentra en ejecución"
-                                        exit 0
-                                else
-                                  for p in $PIDs; do
-                                          echo "Deteniendo proceso $p"
-                                          kill -9 $p
-                                  done
-                                  exit 0
-                                fi
-                        fi
-                fi
+                stop_process
                 echo "end stop"
                ;;
         start)
@@ -71,7 +75,7 @@ case "$1" in
                 if [ $? = 1 ]; then
                         exit 1
                 fi
-#                sh $0 start
+                sh $0 start
                 echo "end restart"
                 ;;
         *)
