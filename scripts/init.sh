@@ -17,6 +17,7 @@ print_process () {
 }
 
 stop_process () {
+       echo "init stop"
         if ! check_if_process_is_running; then
                 PIDs=`ps -ef | grep 'jar' | grep -v grep | awk '{print $2}'`
                 if [ -n $PIDs ]; then
@@ -30,14 +31,15 @@ stop_process () {
                         fi
                 fi
         fi
+        echo "end stop"
 }
 
 start_process() {
-        if [ -z "$2" ]; then
+#        if [ -z "$2" ]; then
                 echo "Iniciando App"
                 $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) > /dev/null &
                 echo "App $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
-        fi
+#        fi
 }
 
 case "$1" in
@@ -49,25 +51,21 @@ case "$1" in
                 fi
                 ;;
         stop)
-                echo "init stop"
                 stop_process
-                echo "end stop"
                ;;
         start)
-#                if check_if_process_is_running; then
-#                        echo "App ya se encuentra en ejecución"
-#                        exit 1
-#                fi
-                start_process "start"
-
+                start_process
                 ;;
         restart)
                 echo "init restart"
-                sh $0 stop
-                if [ $? = 1 ]; then
-                        exit 1
-                fi
-                sh $0 start
+#                sh $0 stop
+#                if [ $? = 1 ]; then
+#                        exit 1
+#                fi
+#                sh $0 start
+                stop_process
+                start_process
+
                 echo "end restart"
                 ;;
         *)
