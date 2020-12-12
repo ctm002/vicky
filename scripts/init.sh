@@ -35,12 +35,10 @@ stop_process () {
 }
 
 start_process() {
-#        if [ -z "$2" ]; then
-                echo "Iniciando App"
-                APP_JAR=`find . -type f -name '*.jar' | sort -n | tail -1`
-#                $JAVA_PATH $SPRING_OPTS -jar $APP_JAR > /dev/null &
-                echo "App $APP_JAR iniciada"
-#        fi
+        echo "Iniciando App"
+        APP_JAR=`find . -type f -name '*.jar' | sort -n | tail -1`
+        noup $JAVA_PATH $SPRING_OPTS -jar $APP_JAR > /dev/null &
+        echo "App $APP_JAR iniciada"
 }
 
 case "$1" in
