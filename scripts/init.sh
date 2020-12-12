@@ -38,7 +38,7 @@ start_process() {
 #        if [ -z "$2" ]; then
                 echo "Iniciando App"
                 APP_JAR=`find . -type f -name '*.jar' | sort -n | tail -1`
-                $JAVA_PATH $SPRING_OPTS -jar $APP_JAR > /dev/null &
+#                $JAVA_PATH $SPRING_OPTS -jar $APP_JAR > /dev/null &
                 echo "App $APP_JAR iniciada"
 #        fi
 }
@@ -59,16 +59,9 @@ case "$1" in
                 ;;
         restart)
                 echo "init restart"
-#                sh $0 stop
-#                if [ $? = 1 ]; then
-#                        exit 1
-#                fi
-#                sh $0 start
                 stop_process
                 start_process
-
                 echo "end restart"
-                exit 0
                 ;;
         *)
                 echo "Uso: $0 {start|stop|restart|status} [jar-file]"
