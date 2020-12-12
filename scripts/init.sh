@@ -38,31 +38,29 @@ case "$1" in
                                   done
                                   exit 0
                                 fi
-                        else
-                                exit 0
                         fi
                 fi
                ;;
         start)
-                if check_if_process_is_running; then
-                        echo "App ya se encuentra en ejecución"
-                        exit 1
-                fi
+#                if check_if_process_is_running; then
+#                        echo "App ya se encuentra en ejecución"
+#                        exit 1
+#                fi
 
                 if [ -z "$2" ]; then
-                        echo "iniciando app.. en los archivos jar"
+                        echo "Iniciando App"
                         $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) > /dev/null &
-                        echo "App find $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
+                        echo "App $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
                         exit 0
-                else
-                        echo "iniciando app.."
-                        if [ -f $2 ]; then
-                                $JAVA_PATH $SPRING_OPTS -jar $2 &
-                                echo "App $2 iniciada"
-                        else
-                                echo "Archivo $2 no encontrado"
-                                exit 1
-                        fi
+#                else
+#                        echo "iniciando app.."
+#                        if [ -f $2 ]; then
+#                                $JAVA_PATH $SPRING_OPTS -jar $2 &
+#                                echo "App $2 iniciada"
+#                        else
+#                                echo "Archivo $2 no encontrado"
+#                                exit 1
+#                        fi
                 fi
                 ;;
         restart)
@@ -73,8 +71,7 @@ case "$1" in
                 sh $0 start
                 ;;
         *)
-
-        echo "Uso: $0 {start|stop|restart|status} [jar-file]"
-        exit 1
+                echo "Uso: $0 {start|stop|restart|status} [jar-file]"
+                exit 1
 esac
 exit 0
