@@ -25,6 +25,7 @@ case "$1" in
                 fi
                 ;;
         stop)
+                echo "init stop"
                 if ! check_if_process_is_running; then
                         PIDs=`ps -ef | grep 'jar' | grep -v grep | awk '{print $2}'`
                         if [ -n $PIDs ]; then
@@ -40,6 +41,7 @@ case "$1" in
                                 fi
                         fi
                 fi
+                echo "end stop"
                ;;
         start)
 #                if check_if_process_is_running; then
@@ -69,7 +71,7 @@ case "$1" in
                 if [ $? = 1 ]; then
                         exit 1
                 fi
-                sh $0 start
+#                sh $0 start
                 echo "end restart"
                 ;;
         *)
