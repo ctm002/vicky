@@ -18,19 +18,25 @@ print_process () {
 
 stop_process () {
         if ! check_if_process_is_running; then
-              PIDs=`ps -ef | grep 'jar' | grep -v grep | awk '{print $2}'`
-              if [ -n $PIDs ]; then
-                      if [ -z $PIDs ]; then
-                              echo "App no se encuentra en ejecución"
-                              exit 0
-                      else
-                        for p in $PIDs; do
-                                echo "Deteniendo proceso $p"
-                                kill -9 $p
-                        done
-                        exit 0
-                      fi
-              fi
+                PIDs=`ps -ef | grep 'jar' | grep -v grep | awk '{print $2}'`
+                if [ -n $PIDs ]; then
+                        if [ -z $PIDs ]; then
+                                echo "App no se encuentra en ejecución"
+                        else
+                                for p in $PIDs; do
+                                        echo "Deteniendo proceso $p"
+                                        kill -9 $p
+                                done
+                        fi
+                fi
+        fi
+}
+
+start_process() {
+        if [ -z "$2" ]; then
+                echo "Iniciando App"
+                $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) > /dev/null &
+                echo "App $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
         fi
 }
 
@@ -52,22 +58,8 @@ case "$1" in
 #                        echo "App ya se encuentra en ejecución"
 #                        exit 1
 #                fi
+                start_process "start"
 
-                if [ -z "$2" ]; then
-                        echo "Iniciando App"
-                        $JAVA_PATH $SPRING_OPTS -jar $(find . -type f -name '*.jar' | sort -n | tail -1) > /dev/null &
-                        echo "App $(find . -type f -name '*.jar' | sort -n | tail -1) iniciada"
-                        exit 0
-#                else
-#                        echo "iniciando app.."
-#                        if [ -f $2 ]; then
-#                                $JAVA_PATH $SPRING_OPTS -jar $2 &
-#                                echo "App $2 iniciada"
-#                        else
-#                                echo "Archivo $2 no encontrado"
-#                                exit 1
-#                        fi
-                fi
                 ;;
         restart)
                 echo "init restart"
