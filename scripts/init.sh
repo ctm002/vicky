@@ -30,7 +30,7 @@ case "$1" in
                         if [ -n $PIDs ]; then
                                 if [ -z $PIDs ]; then
                                         echo "App no se encuentra en ejecución"
-                                        exit 1
+                                        exit 0
                                 else
                                   for p in $PIDs; do
                                           echo "deteniendo proceso $p"
@@ -38,6 +38,8 @@ case "$1" in
                                   done
                                   exit 0
                                 fi
+                        else
+                                exit 0
                         fi
                 fi
                ;;
