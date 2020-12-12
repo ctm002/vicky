@@ -33,7 +33,7 @@ case "$1" in
                                         exit 0
                                 else
                                   for p in $PIDs; do
-                                          echo "deteniendo proceso $p"
+                                          echo "Deteniendo proceso $p"
                                           kill -9 $p
                                   done
                                   exit 0
@@ -64,11 +64,13 @@ case "$1" in
                 fi
                 ;;
         restart)
+                echo "init restart"
                 sh $0 stop
                 if [ $? = 1 ]; then
                         exit 1
                 fi
                 sh $0 start
+                echo "end restart"
                 ;;
         *)
                 echo "Uso: $0 {start|stop|restart|status} [jar-file]"
