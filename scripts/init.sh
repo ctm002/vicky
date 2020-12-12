@@ -17,7 +17,7 @@ print_process () {
 }
 
 stop_process () {
-       echo "init stop"
+        echo "init stop"
         if ! check_if_process_is_running; then
                 PIDs=`ps -ef | grep 'jar' | grep -v grep | awk '{print $2}'`
                 if [ -n $PIDs ]; then
