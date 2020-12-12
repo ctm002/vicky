@@ -68,6 +68,7 @@ case "$1" in
                 start_process
 
                 echo "end restart"
+                exit 0
                 ;;
         *)
                 echo "Uso: $0 {start|stop|restart|status} [jar-file]"
