@@ -41,6 +41,19 @@ start_process() {
         echo "App $APP_JAR iniciada"
 }
 
+status_process() {
+        PIDs=`ps -ef | grep 'jar' | grep -v grep | awk '{print $2}'`
+        if [ -n $PIDs ]; then
+                if [ -z $PIDs ]; then
+                        echo "App no se encuentra en ejecución"
+                else
+                        for p in $PIDs; do
+                                echo "App se encuentra en ejecución. Proceso (PID): $p"
+                        done
+                fi
+        fi
+}
+
 case "$1" in
         status)
                 if check_if_process_is_running; then
