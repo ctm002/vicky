@@ -57,11 +57,7 @@ status_process() {
 
 case "$1" in
         status)
-                if check_if_process_is_running; then
-                        echo "App se encuentra en ejecución. Proceso (PID): $(print_process)"
-                else
-                        echo "App no se encuentra en ejecución"
-                fi
+                status_process
                 ;;
         stop)
                 stop_process
