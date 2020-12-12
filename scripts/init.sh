@@ -37,7 +37,7 @@ stop_process () {
 start_process() {
         echo "Iniciando App"
         APP_JAR=`find . -type f -name '*.jar' | sort -n | tail -1`
-        noup $JAVA_PATH $SPRING_OPTS -jar $APP_JAR > /dev/null &
+        nohup $JAVA_PATH $SPRING_OPTS -jar $APP_JAR > /dev/null &
         echo "App $APP_JAR iniciada"
 }
 
