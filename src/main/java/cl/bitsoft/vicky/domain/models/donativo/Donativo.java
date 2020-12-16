@@ -1,20 +1,58 @@
 package cl.bitsoft.vicky.domain.models.donativo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import cl.bitsoft.vicky.domain.models.usuario.Usuario;
 
-@Entity(name = "TBL_DONATIVO")
+import java.util.List;
+
 public class Donativo {
+    public Long          id;
+    public String        nombre;
+    public Integer       cantidad;
+    public List<Usuario> postulantes;
+    public Usuario       donador;
+    public Usuario       beneficiario;
 
-    @Column(name = "ID")
-    @Id()
-    public Long id;
+    public Donativo(Long id, String nombre, Integer cantidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+    }
 
-    @Column(name = "NOMBRE")
-    public String nombre;
+    public Donativo() {
+        this.donador = new Usuario();
+        this.beneficiario = new Usuario();
+    }
 
-    @Column(name = "CANTIDAD")
-    public Integer cantidad;
-    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    @Override
+    public String toString() {
+        return "Donativo{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", cantidad=" + cantidad +
+                '}';
+    }
 }

@@ -1,9 +1,30 @@
 package cl.bitsoft.vicky.domain.models.usuario;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
-
 public class Usuario {
-    private String nombre;
-    private Long id;
+    private Long   id;
+    private String nombres;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombres + '\'' +
+                '}';
+    }
 }

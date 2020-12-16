@@ -1,7 +1,7 @@
 package cl.bitsoft.vicky.domain.services.donativo;
 
 import cl.bitsoft.vicky.domain.models.donativo.Donativo;
-import cl.bitsoft.vicky.domain.persistence_ports.donativo.DonativoRepository;
+import cl.bitsoft.vicky.domain.persistence_ports.donativo.DonativoPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,14 +10,18 @@ import java.util.List;
 @Service
 public class DonativoService {
 
-    private DonativoRepository donativoRepository;
+    private DonativoPersistence donativoPersistence;
 
     @Autowired
-    public DonativoService(DonativoRepository donativoRepository) {
-        this.donativoRepository = donativoRepository;
+    public DonativoService(DonativoPersistence donativoPersistence) {
+        this.donativoPersistence = donativoPersistence;
     }
 
-    public List<Donativo> findAll() {
-        return this.donativoRepository.findAll();
+    public List<Donativo> readAll() {
+        return this.donativoPersistence.readAll();
+    }
+
+    public Donativo create(Donativo donativo) {
+        return this.donativoPersistence.create(donativo);
     }
 }

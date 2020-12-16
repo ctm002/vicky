@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 @EnableTransactionManagement
 
 @EnableJpaRepositories(
-        basePackages = "cl.bitsoft.vicky.domain.persistence_ports",
+        basePackages = "cl.bitsoft.vicky.adapters.mysql",
         entityManagerFactoryRef = "recicladonaEntityManager",
         transactionManagerRef = "recicladonaTransactionManager")
 public class RecicladonaDbConfig extends HikariConfig {
@@ -46,7 +46,7 @@ public class RecicladonaDbConfig extends HikariConfig {
     @Bean(name = "recicladonaEntityManager")
     public LocalContainerEntityManagerFactoryBean stockEntityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder.dataSource(stockDataSource()).properties(hibernateProperties())
-                .packages("cl.bitsoft.vicky.domain.models.donativo").persistenceUnit("mysqlPU").build();
+                .packages("cl.bitsoft.vicky.adapters.mysql").persistenceUnit("mysqlPU").build();
     }
 
     @Bean(name = "recicladonaTransactionManager")
