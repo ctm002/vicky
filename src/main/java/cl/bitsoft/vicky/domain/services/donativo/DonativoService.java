@@ -24,4 +24,8 @@ public class DonativoService {
     public Donativo create(Donativo donativo) {
         return this.donativoPersistence.create(donativo);
     }
+
+    public List<Donativo> findDonativosByIdDonante(Long id) {
+        return this.donativoPersistence.findDonativosByIdDonante(id);
+    }
 }

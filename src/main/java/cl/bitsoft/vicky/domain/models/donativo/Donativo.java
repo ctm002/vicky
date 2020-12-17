@@ -6,15 +6,15 @@ import java.util.List;
 
 public class Donativo {
     public Long          id;
-    public String        nombre;
+    public String        titulo;
     public Integer       cantidad;
     public List<Usuario> postulantes;
     public Usuario       donador;
     public Usuario       beneficiario;
 
-    public Donativo(Long id, String nombre, Integer cantidad) {
+    public Donativo(Long id, String titulo, Integer cantidad) {
         this.id = id;
-        this.nombre = nombre;
+        this.titulo = titulo;
         this.cantidad = cantidad;
     }
 
@@ -31,12 +31,12 @@ public class Donativo {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public Integer getCantidad() {
@@ -51,7 +51,7 @@ public class Donativo {
     public String toString() {
         return "Donativo{" +
                 "id=" + id +
-                ", nombre='" + nombre + '\'' +
+                ", titulo='" + titulo + '\'' +
                 ", cantidad=" + cantidad +
                 '}';
     }

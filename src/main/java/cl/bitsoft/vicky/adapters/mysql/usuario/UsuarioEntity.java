@@ -31,8 +31,11 @@ public class UsuarioEntity {
     @Column(name="FECHA_NACIMIENTO")
     private LocalDate fechaNacimiento;
 
-    @OneToMany(mappedBy = "donador")
-    private List<DonativoEntity> donativo;
+//    @OneToMany(mappedBy = "donador")
+//    private List<DonativoEntity> donativos;
+
+//    @OneToMany(mappedBy = "beneficiario")
+//    private List<DonativoEntity> asignaciones;
 
     public UsuarioEntity(){}
 

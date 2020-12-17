@@ -6,7 +6,7 @@ import cl.bitsoft.vicky.domain.models.donativo.Donativo;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name = "TBL_DONATIVO")
 public class DonativoEntity {
@@ -16,8 +16,8 @@ public class DonativoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column(name = "NOMBRE")
-    public String nombre;
+    @Column(name = "TITULO")
+    public String titulo;
 
     @Column(name = "CANTIDAD")
     public Integer cantidad;
@@ -25,6 +25,18 @@ public class DonativoEntity {
     @OneToOne
     @JoinColumn(name = "FK_ID_USUARIO_CREADOR")
     public UsuarioEntity donador = new UsuarioEntity();
+
+    @OneToOne
+    @JoinColumn(name = "FK_ID_USUARIO_ASIGNADO")
+    public UsuarioEntity beneficiario;
+
+    @JoinTable(
+            name = "REL_DONATIVO_POSTULANTE",
+            joinColumns = @JoinColumn(name = "FK_DONATIVO", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="FK_POSTULANTE", nullable = false)
+    )
+    @ManyToMany
+    public List<PostulanteEntity> postulantes;
 
     public DonativoEntity() {
     }
@@ -37,6 +49,7 @@ public class DonativoEntity {
     public Donativo toDonativo() {
         Donativo donativo = new Donativo();
         BeanUtils.copyProperties(this, donativo);
+//        BeanUtils.copyProperties(this.donador, donativo.donador);
         return donativo;
     }
 
@@ -48,12 +61,12 @@ public class DonativoEntity {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public Integer getCantidad() {
