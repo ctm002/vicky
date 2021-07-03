@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface DonativoRepository extends JpaRepository<DonativoEntity, Long> {
     List<DonativoEntity> findByDonador(UsuarioEntity usuarioEntity);
+    List<DonativoEntity> findByBeneficiario(UsuarioEntity usuarioEntity);
 }

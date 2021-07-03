@@ -25,6 +25,7 @@ public class UsuarioEntity {
     @Column(name="RUT")
     private String rut;
 
+//    @Enumerated(EnumType.STRING)
     @Column(name="GENERO")
     private String genero;
 
@@ -111,7 +112,7 @@ public class UsuarioEntity {
                 ", apellidoPaterno='" + apellidoPaterno + '\'' +
                 ", apellidoMaterno='" + apellidoMaterno + '\'' +
                 ", rut='" + rut + '\'' +
-                ", genero='" + genero + '\'' +
+//                ", genero='" + genero + '\'' +
                 '}';
     }
 }

@@ -5,12 +5,12 @@ import cl.bitsoft.vicky.domain.models.usuario.Usuario;
 import java.util.List;
 
 public class Donativo {
-    public Long          id;
-    public String        titulo;
-    public Integer       cantidad;
-    public List<Usuario> postulantes;
-    public Usuario       donador;
-    public Usuario       beneficiario;
+    public Long             id;
+    public String           titulo;
+    public Integer          cantidad;
+    public List<Postulante> postulantes;
+    public Usuario          donador;
+    public Usuario          beneficiario;
 
     public Donativo(Long id, String titulo, Integer cantidad) {
         this.id = id;

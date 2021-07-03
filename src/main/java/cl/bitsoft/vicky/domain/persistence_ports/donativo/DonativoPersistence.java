@@ -9,6 +9,8 @@ import java.util.List;
 public interface DonativoPersistence {
     public List<Donativo> readAll();
     public Donativo create(Donativo donativo);
-    public List<Donativo> findDonativosByIdDonante(Long id);
-//    public List<Donativo> findByIdUsuarioBeneficiario(Long id);
+//    public List<Donativo> findDonativosByDonanteOrBeneficiario(Long IdDonante, Long IdBeneficiario);
+     List<Donativo> findDonativosByDonante(Long id);
+     List<Donativo> findDonativosByBeneficiario(Long id);
+     Donativo findById(Long id);
 }

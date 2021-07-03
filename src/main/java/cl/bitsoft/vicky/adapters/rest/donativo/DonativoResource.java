@@ -2,6 +2,8 @@ package cl.bitsoft.vicky.adapters.rest.donativo;
 
 import cl.bitsoft.vicky.adapters.rest.LexicalAnalyzer;
 import cl.bitsoft.vicky.domain.models.donativo.Donativo;
+import cl.bitsoft.vicky.domain.models.donativo.Postulante;
+import cl.bitsoft.vicky.domain.models.usuario.Usuario;
 import cl.bitsoft.vicky.domain.services.donativo.DonativoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +32,24 @@ public class DonativoResource {
         return responseEntity;
     }
 
-    @GetMapping("search")
-    public ResponseEntity<Object> search(@RequestParam String q) {
+    @GetMapping("search-donante")
+    public ResponseEntity<Object> searchByDonante(@RequestParam String q) {
         Long donante = new LexicalAnalyzer().extractWithAssure(q, "donante", Long::parseLong);
-        Long beneficiario = new LexicalAnalyzer().extractWithAssure(q, "beneficiario", Long::parseLong);
-        ResponseEntity responseEntity = ResponseEntity.ok(this.donativoService.findDonativosByIdDonante(donante));
+        ResponseEntity responseEntity = ResponseEntity.ok(this.donativoService.findDonativosByDonante(donante));
         return responseEntity;
+    }
+
+    @GetMapping("search-beneficiario")
+    public ResponseEntity<Object> searchByBeneficiario(@RequestParam String q) {
+        Long beneficiario = new LexicalAnalyzer().extractWithAssure(q, "beneficiario", Long::parseLong);
+        ResponseEntity responseEntity = ResponseEntity.ok(this.donativoService.findDonativosByBeneficiario(beneficiario));
+        return responseEntity;
+    }
+
+    @PutMapping("/{id}/postulantes")
+    public ResponseEntity<Object> create(@RequestParam String id, @RequestBody String usuario) {
+        ResponseEntity responseEntity = ResponseEntity.ok(this.donativoService.create(id, usuario));
+//        return responseEntity;
+        return null;
     }
 }

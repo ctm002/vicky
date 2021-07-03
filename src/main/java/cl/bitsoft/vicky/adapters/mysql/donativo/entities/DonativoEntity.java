@@ -31,11 +31,11 @@ public class DonativoEntity {
     public UsuarioEntity beneficiario;
 
     @JoinTable(
-            name = "REL_DONATIVO_POSTULANTE",
-            joinColumns = @JoinColumn(name = "FK_DONATIVO", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="FK_POSTULANTE", nullable = false)
+            name = "POSTULANTE",
+            joinColumns = @JoinColumn(name = "FK_ID_DONATIVO", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="FK_ID_USUARIO", nullable = false)
     )
-    @ManyToMany
+    @OneToMany
     public List<PostulanteEntity> postulantes;
 
     public DonativoEntity() {
